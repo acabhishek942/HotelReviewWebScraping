@@ -25,3 +25,11 @@ for week in range(how_many_weeks_to_check):
     start_date = current_time + datetime.timedelta(days=week*7) + datetime.timedelta(days=weeks_from_now_to_look*7)
     end_date = start_date + datetime.timedelta(days=nights_stay)
     print(start_date.strftime("%d %b, %a") + ' to ' + end_date.strftime("%d %b, %a"))
+
+css_selector_calendar = '.ui-datepicker-calendar tbody tr td a'
+id_destination_textbox = 'hp-widget__sDest'
+id_checkin_textbox = 'hp-widget__chkIn'
+id_checkOut_tetbox = 'hp-widget__chkOut'
+id_search_button = 'searchBtn'
+id_user_review_tab = 'details-nav-userreview'
+css_selector_review_sources = '.htD-user-rating-company'
