@@ -43,31 +43,25 @@ driver = webdriver.Chrome(chromedriver_path)
 time_delay = randint(3,6)
 
 for week in range(0,how_many_weeks_to_check):
+    # Open the MMT hotel search website
     driver.get(url)
     time.sleep(time_delay)
+
+    # set the checkin and checkout date
     start_date = current_time + datetime.timedelta(days=week*7) + datetime.timedelta(days=weeks_from_now_to_look*7)
     end_date = start_date + datetime.timedelta(days=nights_stay)
-    selectElem=driver.find_element_by_id(id_checkin_textbox)
-    selectElem.clear()
-    selectElem.send_keys(start_date.strftime("%d %b, %a"))
-    time.sleep(time_delay)
-    selectElem.submit()
-    time.sleep(time_delay)
-    selectElem=driver.find_element_by_id(id_checkOut_tetbox)
-    selectElem.clear()
-    selectElem.send_keys(end_date.strftime("%d %b, %a"))
-    time.sleep(time_delay)
-    # change required here
-    driver.find_element_by_id('id_search_button').click()
-    time.sleep(time_delay)
-    # site_data = driver.find_elements_by_class_name('searchSummary')
+
+    # click on the check in date textbox
+    checkin_date_element=driver.find_element_by_id(id_checkin_textbox)
+    checkin_date_element.click()
+
     time.sleep(time_delay)
 
-    # property_data = []
-# for i in site_data:
-#         if len(i.text) != 0:
-#              property_data.append(i.text)
-#
-#     camping_availability_dictionary[start_date.strftime("%a %b %d %Y") + ' to ' + end_date.strftime("%a %b %d %Y")] = property_data
-#
-#     time.sleep(time_delay)
+    # click on the checkout date textbox
+    checkout_date_element=driver.find_element_by_id(id_checkOut_tetbox)
+    checkout_date_element.click()
+
+    time.sleep(time_delay)
+    # click on the search button
+    driver.find_element_by_id(id_search_button).click()
+    time.sleep(time_delay)
