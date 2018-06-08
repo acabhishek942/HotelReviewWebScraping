@@ -34,7 +34,7 @@ print(checkInDate, checkoutDate)
 def main():
     page = Page('https://www.makemytrip.com/mmthtl/site/hotels/detail?checkin=06102018&checkout=06242018&roomStayQualifier=2e0e&city=BLR&area=&areaId=undefined&searchText=The%20Chancery%20Pavilion,%20Bangalore&country=IN&hotelId=200701121638544369')
     soup = bs.BeautifulSoup(page.html, 'html5lib')
-    print(soup)
+    # print(soup)
     # js_test = soup.find('p', class_='mboxDefault')
     # print (js_test.text)
 
