@@ -42,26 +42,46 @@ driver = webdriver.Chrome(chromedriver_path)
 
 time_delay = randint(3,6)
 
-for week in range(0,how_many_weeks_to_check):
-    # Open the MMT hotel search website
-    driver.get(url)
-    time.sleep(time_delay)
 
-    # set the checkin and checkout date
-    start_date = current_time + datetime.timedelta(days=week*7) + datetime.timedelta(days=weeks_from_now_to_look*7)
-    end_date = start_date + datetime.timedelta(days=nights_stay)
+# Open the MMT hotel search website
+driver.get(url)
+time.sleep(time_delay)
 
-    # click on the check in date textbox
-    checkin_date_element=driver.find_element_by_id(id_checkin_textbox)
-    checkin_date_element.click()
+# set the checkin and checkout date
+# start_date = current_time + datetime.timedelta(days=week*7) + datetime.timedelta(days=weeks_from_now_to_look*7)
+# end_date = start_date + datetime.timedelta(days=nights_stay)
 
-    time.sleep(time_delay)
+# enter the destinataion
+destinataion_hotel = driver.find_element_by_id(id_destination_textbox)
+destinataion_hotel.click()
+destinataion_hotel.clear()
+destinataion_hotel.send_keys(hotel_name)
 
-    # click on the checkout date textbox
-    checkout_date_element=driver.find_element_by_id(id_checkOut_tetbox)
-    checkout_date_element.click()
+time.sleep(time_delay)
 
-    time.sleep(time_delay)
-    # click on the search button
-    driver.find_element_by_id(id_search_button).click()
-    time.sleep(time_delay)
+# click on the check in date textbox
+checkin_date_element=driver.find_element_by_id(id_checkin_textbox)
+checkin_date_element.click()
+
+time.sleep(time_delay)
+
+# click on the checkout date textbox
+checkout_date_element=driver.find_element_by_id(id_checkOut_tetbox)
+checkout_date_element.click()
+
+time.sleep(time_delay)
+
+# click on the search button
+driver.find_element_by_id(id_search_button).click()
+time.sleep(time_delay)
+time.sleep(time_delay)
+
+# need to put double delay above because 'user review takes a bit to load'
+
+# click on the user review tab
+driver.find_element_by_id(id_user_review_tab).click()
+
+time.sleep(time_delay)
+
+# close web driver
+driver.close()
