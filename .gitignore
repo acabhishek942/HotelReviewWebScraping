@@ -105,3 +105,6 @@ venv.bak/
 
 #Virtualenv
 webscrapingVirtualEnv/*
+
+#webdrivers
+webdrivers/*
