@@ -9,8 +9,9 @@ import pandas as pd
 
 url = 'https://www.makemytrip.com/hotels/'
 
+
 # hard-coded hotel name
-hotel_name = 'The Chancery Pavilion'
+hotel_name = 'The Chancery Pavilion, Bangalore'
 
 # perform search relative to current date
 current_time = datetime.datetime.now()
@@ -26,7 +27,7 @@ for week in range(how_many_weeks_to_check):
     end_date = start_date + datetime.timedelta(days=nights_stay)
     print(start_date.strftime("%d %b, %a") + ' to ' + end_date.strftime("%d %b, %a"))
 
-css_selector_calendar = '.ui-datepicker-calendar tbody tr td a'
+css_selector_calendar = '.ui-datepicker-week-end a'
 id_destination_textbox = 'hp-widget__sDest'
 id_checkin_textbox = 'hp-widget__chkIn'
 id_checkOut_tetbox = 'hp-widget__chkOut'
@@ -62,6 +63,12 @@ time.sleep(time_delay)
 # click on the check in date textbox
 checkin_date_element=driver.find_element_by_id(id_checkin_textbox)
 checkin_date_element.click()
+
+time.sleep(time_delay)
+
+# pick the next weekend checkin date
+checkin_date_picker = driver.find_elements_by_css_selector(css_selector_calendar)
+checkin_date_picker[2].click()
 
 time.sleep(time_delay)
 
